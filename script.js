@@ -20,6 +20,16 @@ function activateSpec(targetId, shouldScroll=false){
 
 tabs.forEach(tab=>tab.addEventListener('click',()=>activateSpec(tab.dataset.target)));
 
+function activateFromHash(){
+  const hash=window.location.hash.replace('#','');
+  if(['whoop-spec','aero-spec','blind-spec','common-spec'].includes(hash)){
+    activateSpec(hash,false);
+    requestAnimationFrame(()=>document.getElementById('rules')?.scrollIntoView({behavior:'smooth',block:'start'}));
+  }
+}
+window.addEventListener('hashchange',activateFromHash);
+activateFromHash();
+
 document.querySelectorAll('.event-spec-link').forEach(link=>link.addEventListener('click',e=>{
   e.preventDefault();
   activateSpec(link.dataset.specTarget, true);
@@ -32,11 +42,6 @@ const io=new IntersectionObserver(entries=>{
  })
 },{threshold:.08});
 document.querySelectorAll('.event-card,.time-item,.spec,.register-grid,.faq-list').forEach(x=>io.observe(x));
-
-document.getElementById('pilotForm')?.addEventListener('submit',e=>{
- e.preventDefault();
- document.getElementById('formStatus').textContent='Enquiry captured. Please use the official registration form above to complete registration.';
-});
 
 const targetDate=new Date('2026-11-10T23:59:59+05:30').getTime();
 function tick(){const d=Math.max(0,targetDate-Date.now());const s=Math.floor(d/1000);const vals=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];['cdDays','cdHours','cdMinutes','cdSeconds'].forEach((id,i)=>document.getElementById(id).textContent=String(vals[i]).padStart(2,'0'));}
