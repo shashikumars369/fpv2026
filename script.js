@@ -5,11 +5,24 @@ document.querySelectorAll('.header nav a').forEach(a=>a.addEventListener('click'
 
 const tabs=document.querySelectorAll('.tab');
 const specs=document.querySelectorAll('.spec');
-tabs.forEach(tab=>tab.addEventListener('click',()=>{
+function activateSpec(targetId, shouldScroll=false){
+  const target=document.getElementById(targetId);
+  const tab=document.querySelector(`.tab[data-target="${targetId}"]`);
+  if(!target || !tab) return;
   tabs.forEach(x=>x.classList.remove('active'));
   specs.forEach(x=>x.classList.remove('active'));
   tab.classList.add('active');
-  document.getElementById(tab.dataset.target).classList.add('active');
+  target.classList.add('active');
+  if(shouldScroll){
+    document.getElementById('rules')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+}
+
+tabs.forEach(tab=>tab.addEventListener('click',()=>activateSpec(tab.dataset.target)));
+
+document.querySelectorAll('.event-spec-link').forEach(link=>link.addEventListener('click',e=>{
+  e.preventDefault();
+  activateSpec(link.dataset.specTarget, true);
 }));
 
 
