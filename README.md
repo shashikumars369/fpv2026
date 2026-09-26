@@ -1,18 +1,14 @@
-# JAIN FPV Drone Racing Championship 2026 — Demo Website
+# National FPV Drone Racing Championship 2026
 
-Static HTML/CSS/JavaScript website prepared for GitHub Pages.
+Official static website for the National FPV Drone Racing Championship 2026.
 
-## GitHub Pages deployment
+- Dates: 20–21 November 2026
+- Venue: Jain University Global Campus, Kanakapura
+- Registration fee: ₹5,000
+- Registration deadline: 10 November 2026
+- Prize pool: ₹3,00,000
+- Email: nationalfpvdroneracingchampion@gmail.com
+- Phone: +91 86605 12408
+- Registration: https://forms.gle/uKNERDTWPuambLuZ7
 
-1. Upload all files in this folder to the root of the `main` branch.
-2. Go to **Settings → Pages**.
-3. Under **Build and deployment → Source**, select **GitHub Actions**.
-4. Push/commit the files to `main`.
-5. Open **Actions** and wait for **Deploy FPV Championship Website** to complete successfully.
-6. The deployed URL will appear in the workflow's deployment/environment information and under **Settings → Pages**.
-
-The `.github/workflows/pages.yml` workflow deploys the static website automatically whenever changes are pushed to `main`.
-
-## Demo data
-
-The competition date, venue, registration fee, prize pool, deadline, registration URL, and other competition details are temporary demo values and must be replaced before publication.
+This is a static HTML/CSS/JavaScript site suitable for GitHub Pages.

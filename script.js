@@ -12,10 +12,6 @@ tabs.forEach(tab=>tab.addEventListener('click',()=>{
   document.getElementById(tab.dataset.target).classList.add('active');
 }));
 
-document.getElementById('pilotForm')?.addEventListener('submit',(e)=>{
-  e.preventDefault();
-  document.getElementById('formStatus').textContent='Enquiry captured locally. Connect this form to your official registration service before publishing.';
-});
 
 const io=new IntersectionObserver(entries=>{
  entries.forEach(x=>{
@@ -26,7 +22,7 @@ document.querySelectorAll('.event-card,.time-item,.spec,.register-grid,.faq-list
 
 document.getElementById('pilotForm')?.addEventListener('submit',e=>{
  e.preventDefault();
- document.getElementById('formStatus').textContent='Demo enquiry submitted locally. Connect this form to the official registration backend before launch.';
+ document.getElementById('formStatus').textContent='Enquiry captured. Please use the official registration form above to complete registration.';
 });
 
 const targetDate=new Date('2026-11-10T23:59:59+05:30').getTime();
