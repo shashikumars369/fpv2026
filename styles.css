@@ -391,3 +391,51 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
 @keyframes coorgMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:760px){.coorganizers{padding:55px 0 60px}.coorg-head{padding-bottom:25px}.logo-marquee:before,.logo-marquee:after{width:55px}.logo-marquee-track{gap:14px;animation-duration:36s}.coorg-logo{width:235px;height:135px}.coorg-logo img{height:78px}.coorg-logo span{font-size:7px;white-space:normal}.coorg-logo span small{font-size:6px;margin-top:4px}.coorg-logo:nth-child(3) img{height:84px}.coorg-logo:nth-child(4) img{height:76px}}
 @media(prefers-reduced-motion:reduce){.logo-marquee-track{animation:none}}
+
+/* V19 — JAIN/FET logo integration: intentional frosted-glass brand plate */
+.header .institution-badge{
+  height:54px!important;
+  width:238px!important;
+  flex:0 0 238px!important;
+  padding:5px 14px!important;
+  border-radius:14px!important;
+  background:linear-gradient(135deg,rgba(255,255,255,.97),rgba(235,247,255,.94))!important;
+  border:1px solid rgba(70,225,255,.72)!important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.10),
+    0 8px 28px rgba(0,0,0,.30),
+    0 0 26px rgba(25,231,255,.14),
+    inset 0 1px 0 rgba(255,255,255,.9)!important;
+  position:relative!important;
+}
+.header .institution-badge::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  border-radius:14px;
+  padding:1px;
+  background:linear-gradient(90deg,rgba(25,231,255,.75),rgba(150,90,255,.35),rgba(25,231,255,.75));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+  opacity:.9;
+}
+.header .institution-badge::after{
+  content:"JAIN • FET";
+  position:absolute;
+  right:10px;
+  bottom:3px;
+  font:700 6px/1 Orbitron,sans-serif;
+  letter-spacing:.16em;
+  color:rgba(7,63,104,.58);
+  pointer-events:none;
+}
+.header .institution-badge img{
+  position:relative!important;
+  z-index:1!important;
+}
+@media(max-width:1100px){
+  .header .institution-badge{width:188px!important;height:48px!important;flex-basis:188px!important;padding:4px 10px!important;border-radius:12px!important}
+  .header .institution-badge::after{font-size:5px;right:8px;bottom:2px}
+}
