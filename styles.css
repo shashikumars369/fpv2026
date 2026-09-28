@@ -600,3 +600,104 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
   .hero-rail-track img[src="aeronautical-society.png"]{max-width:145px;max-height:145px;}
   .hero-rail-track img[src="aerovidya.png"]{max-width:165px;max-height:145px;}
 }
+
+/* V33 — Rugged cinematic SKYFURY hero branding */
+.hero-event-brand{
+  position:relative;
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-start;
+  margin:2px 0 22px;
+  padding:8px 18px 12px 0;
+  text-decoration:none;
+  isolation:isolate;
+  transform:skewX(-3deg);
+}
+.hero-event-brand:before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  left:-16px;
+  right:-34px;
+  top:0;
+  bottom:0;
+  background:linear-gradient(105deg,rgba(25,231,255,.16),rgba(255,54,200,.10) 48%,rgba(199,255,46,.12));
+  border-left:4px solid #19e7ff;
+  border-right:1px solid rgba(255,255,255,.16);
+  clip-path:polygon(2% 0,100% 0,96% 100%,0 88%);
+  box-shadow:0 0 28px rgba(25,231,255,.10),inset 0 0 24px rgba(255,255,255,.035);
+}
+.hero-event-brand:after{
+  content:"SKYFURY // FPV // 2026";
+  position:absolute;
+  z-index:-1;
+  right:-22px;
+  bottom:-7px;
+  font:800 8px/1 Orbitron,sans-serif;
+  letter-spacing:.22em;
+  color:rgba(255,255,255,.32);
+  transform:skewX(3deg);
+}
+.hero-event-brand .competition-name{
+  position:relative;
+  display:block;
+  font-family:Orbitron,sans-serif!important;
+  font-size:clamp(44px,6.2vw,82px)!important;
+  line-height:.9!important;
+  font-weight:900!important;
+  letter-spacing:-.025em!important;
+  text-transform:uppercase;
+  margin:0!important;
+  background:linear-gradient(100deg,#ffffff 0%,#19e7ff 23%,#3177ff 48%,#ff36c8 72%,#c7ff2e 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent!important;
+  -webkit-text-stroke:1px rgba(255,255,255,.12);
+  filter:drop-shadow(0 7px 0 rgba(0,0,0,.55)) drop-shadow(0 0 18px rgba(25,231,255,.18));
+  text-shadow:3px 3px 0 rgba(255,54,200,.12),-2px -2px 0 rgba(25,231,255,.10);
+  transform:skewX(3deg);
+}
+.hero-event-brand .competition-name:before{
+  content:"SKYFURY 2026";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent 0 9%,rgba(255,255,255,.42) 10% 11%,transparent 12% 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  opacity:.45;
+  animation:skyfuryGlint 4.8s ease-in-out infinite;
+  pointer-events:none;
+}
+.hero-event-brand .competition-subtitle{
+  display:block;
+  position:relative;
+  margin:10px 0 0!important;
+  padding-left:5px;
+  font:800 clamp(11px,1.15vw,16px)/1.15 Inter,sans-serif!important;
+  letter-spacing:.22em!important;
+  text-transform:uppercase;
+  color:#f5fbff!important;
+  text-shadow:0 2px 0 #050708,0 0 14px rgba(25,231,255,.28)!important;
+  transform:skewX(3deg);
+}
+.hero-event-brand .competition-subtitle:before{
+  content:"";
+  display:inline-block;
+  width:32px;
+  height:2px;
+  margin:0 10px 4px 0;
+  background:linear-gradient(90deg,#19e7ff,#ff36c8,#c7ff2e);
+  box-shadow:0 0 10px rgba(25,231,255,.55);
+}
+@keyframes skyfuryGlint{
+  0%,68%,100%{transform:translateX(-110%);opacity:0}
+  76%{opacity:.5}
+  88%{transform:translateX(110%);opacity:0}
+}
+@media(max-width:760px){
+  .hero-event-brand{margin-top:0;padding-right:8px}
+  .hero-event-brand .competition-name{font-size:clamp(38px,12vw,58px)!important}
+  .hero-event-brand .competition-subtitle{font-size:10px!important;letter-spacing:.13em!important}
+  .hero-event-brand:before{left:-8px;right:-12px}
+}
