@@ -46,3 +46,27 @@ document.querySelectorAll('.event-card,.time-item,.spec,.register-grid,.faq-list
 const targetDate=new Date('2026-11-10T23:59:59+05:30').getTime();
 function tick(){const d=Math.max(0,targetDate-Date.now());const s=Math.floor(d/1000);const vals=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];['cdDays','cdHours','cdMinutes','cdSeconds'].forEach((id,i)=>document.getElementById(id).textContent=String(vals[i]).padStart(2,'0'));}
 tick();setInterval(tick,1000);
+
+
+/* V13 — Slow auto-slide for event cards, pauses on hover/touch */
+const eventSlider=document.querySelector('.event-slider');
+if(eventSlider){
+  let eventTimer=null;
+  const startEventSlide=()=>{
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(eventSlider.scrollWidth<=eventSlider.clientWidth) return;
+    clearInterval(eventTimer);
+    eventTimer=setInterval(()=>{
+      const max=eventSlider.scrollWidth-eventSlider.clientWidth;
+      const next=eventSlider.scrollLeft+1.1;
+      if(next>=max-2){eventSlider.scrollTo({left:0,behavior:'smooth'});}
+      else eventSlider.scrollLeft=next;
+    },45);
+  };
+  const pauseEventSlide=()=>clearInterval(eventTimer);
+  eventSlider.addEventListener('mouseenter',pauseEventSlide);
+  eventSlider.addEventListener('mouseleave',startEventSlide);
+  eventSlider.addEventListener('touchstart',pauseEventSlide,{passive:true});
+  eventSlider.addEventListener('touchend',()=>setTimeout(startEventSlide,1800),{passive:true});
+  startEventSlide();
+}
