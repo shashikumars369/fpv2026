@@ -548,3 +548,5 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
   .hero-rail-track small{font-size:3.5px}
 }
 @media(prefers-reduced-motion:reduce){.hero-rail-track{animation:none!important}}
+
+.event-descriptor{margin:.35rem 0 0;font-size:clamp(.85rem,1.2vw,1.05rem);letter-spacing:.08em;text-transform:uppercase;font-weight:600;opacity:.88}
