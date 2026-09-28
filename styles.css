@@ -457,3 +457,94 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
 .competition-to-institution-divider span{display:block;font:700 9px Orbitron;color:var(--cyan);letter-spacing:.22em;margin-bottom:7px}
 .competition-to-institution-divider strong{display:block;font:800 clamp(22px,3vw,34px) Orbitron;letter-spacing:-.03em;color:#eef7f7}
 .competition-to-institution-divider small{display:block;margin-top:5px;color:#738083;font-size:11px}
+
+/* V23 — Partner/sponsor rails integrated directly around the cinematic hero image */
+.hero-visual-stack{
+  position:absolute;
+  right:2.5%;
+  top:50%;
+  transform:translateY(-50%);
+  width:min(52vw,720px);
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:4;
+}
+.hero-visual-stack .hero-art{
+  position:relative;
+  inset:auto;
+  right:auto;
+  top:auto;
+  width:100%;
+  height:min(55vh,500px);
+  transform:none;
+  flex:none;
+}
+.hero-partner-rail{
+  width:100%;
+  border:1px solid rgba(25,231,255,.22);
+  background:linear-gradient(90deg,rgba(3,10,25,.92),rgba(12,7,30,.82),rgba(3,15,25,.92));
+  box-shadow:0 8px 28px rgba(0,0,0,.28), inset 0 0 22px rgba(25,231,255,.035);
+  backdrop-filter:blur(10px);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  min-height:74px;
+}
+.hero-sponsor-rail{border-color:rgba(255,54,200,.22)}
+.hero-rail-label{
+  flex:0 0 105px;
+  padding:0 12px;
+  color:var(--cyan);
+  font:800 8px Orbitron,sans-serif;
+  letter-spacing:.12em;
+  text-align:center;
+  border-right:1px solid rgba(25,231,255,.18);
+}
+.hero-sponsor-rail .hero-rail-label{color:#ff6bd7;border-right-color:rgba(255,54,200,.18)}
+.hero-rail-window{min-width:0;overflow:hidden;flex:1;position:relative}
+.hero-rail-window:before,.hero-rail-window:after{content:"";position:absolute;z-index:2;top:0;bottom:0;width:42px;pointer-events:none}
+.hero-rail-window:before{left:0;background:linear-gradient(90deg,rgba(5,10,25,.95),transparent)}
+.hero-rail-window:after{right:0;background:linear-gradient(-90deg,rgba(5,10,25,.95),transparent)}
+.hero-rail-track{display:flex;align-items:center;gap:12px;width:max-content;animation:heroPartnerMove 34s linear infinite;will-change:transform}
+.hero-sponsor-rail .hero-rail-track{animation-duration:40s;animation-direction:reverse}
+.hero-rail-track span{
+  width:105px;height:54px;flex:0 0 105px;
+  display:flex;align-items:center;justify-content:center;position:relative;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.035);
+  border-radius:8px;
+}
+.hero-rail-track img{max-width:82px;max-height:38px;object-fit:contain;display:block}
+.hero-rail-track .asi{height:54px;flex-direction:column;gap:2px}
+.hero-rail-track .asi img{max-height:31px}
+.hero-rail-track small{font:700 5px Arial,sans-serif;letter-spacing:.08em;color:#d9e5e8;white-space:nowrap}
+.hero-sponsor-rail .hero-rail-track span{background:rgba(255,255,255,.025);border-color:rgba(255,54,200,.12)}
+@keyframes heroPartnerMove{from{transform:translateX(0)}to{transform:translateX(-50%)} }
+.hero-partner-rail:hover .hero-rail-track{animation-play-state:paused}
+@media(max-width:1100px){
+  .hero-visual-stack{width:48vw;right:1.5%}
+  .hero-visual-stack .hero-art{height:min(50vh,450px)}
+}
+@media(max-width:900px){
+  .hero-visual-stack{width:100%;right:-28%;top:58%;opacity:.94}
+  .hero-visual-stack .hero-art{height:350px;opacity:.30;border-radius:22px}
+  .hero-partner-rail{min-height:58px}
+  .hero-rail-label{flex-basis:80px;font-size:6px;padding:0 7px}
+  .hero-rail-track span{width:82px;height:42px;flex-basis:82px}
+  .hero-rail-track img{max-width:64px;max-height:29px}
+  .hero-rail-track .asi img{max-height:23px}
+  .hero-rail-track small{font-size:4px}
+}
+@media(max-width:560px){
+  .hero-visual-stack{right:-38%;top:58%;width:115%;opacity:.26;gap:7px}
+  .hero-visual-stack .hero-art{height:285px}
+  .hero-partner-rail{min-height:48px}
+  .hero-rail-label{flex-basis:66px;font-size:5px}
+  .hero-rail-track{gap:8px}
+  .hero-rail-track span{width:68px;height:34px;flex-basis:68px}
+  .hero-rail-track img{max-width:54px;max-height:23px}
+  .hero-rail-track .asi img{max-height:18px}
+  .hero-rail-track small{font-size:3.5px}
+}
+@media(prefers-reduced-motion:reduce){.hero-rail-track{animation:none!important}}
