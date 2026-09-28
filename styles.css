@@ -451,3 +451,9 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
   .header .institution-badge{width:188px!important;height:48px!important;flex-basis:188px!important;padding:4px 10px!important;border-radius:12px!important}
   .header .institution-badge::after{font-size:5px;right:8px;bottom:2px}
 }
+
+/* Institutional information divider — intentionally placed after all competition content */
+.competition-to-institution-divider{max-width:1100px;margin:0 auto;padding:34px 7vw 10px;text-align:center;border-top:1px solid rgba(25,231,255,.16);background:linear-gradient(180deg,rgba(8,15,18,.96),rgba(5,8,10,.96));}
+.competition-to-institution-divider span{display:block;font:700 9px Orbitron;color:var(--cyan);letter-spacing:.22em;margin-bottom:7px}
+.competition-to-institution-divider strong{display:block;font:800 clamp(22px,3vw,34px) Orbitron;letter-spacing:-.03em;color:#eef7f7}
+.competition-to-institution-divider small{display:block;margin-top:5px;color:#738083;font-size:11px}
