@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 150">
+  <rect x="3" y="3" width="494" height="144" rx="18" fill="none" stroke="#19e7ff" stroke-opacity="0.35" stroke-width="3" stroke-dasharray="9 8"/>
+  <path d="M90 75h320" stroke="#19e7ff" stroke-opacity="0.12" stroke-width="2"/>
+  <text x="250" y="82" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="700" letter-spacing="5" fill="#9ab0bd" fill-opacity="0.62">YOUR LOGO HERE</text>
+  <text x="250" y="112" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" letter-spacing="4" fill="#19e7ff" fill-opacity="0.55">SPONSOR 06</text>
+</svg>
