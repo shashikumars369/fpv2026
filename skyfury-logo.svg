@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#19e7ff"/><stop offset=".52" stop-color="#fff"/><stop offset="1" stop-color="#ff36c8"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="900" height="260" rx="28" fill="#050a19" fill-opacity=".92" stroke="#19e7ff" stroke-opacity=".35" stroke-width="3"/>
+  <g filter="url(#glow)" fill="none" stroke="url(#g)" stroke-width="9" stroke-linecap="round">
+    <path d="M55 75 L185 125 L55 175"/><path d="M845 75 L715 125 L845 175"/>
+    <path d="M215 190 H685" stroke-opacity=".55"/>
+  </g>
+  <text x="450" y="128" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-size="82" font-weight="900" font-style="italic" letter-spacing="7" fill="url(#g)">SKYFURY</text>
+  <text x="450" y="184" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="800" letter-spacing="13" fill="#ffffff">2026</text>
+</svg>

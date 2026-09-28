@@ -547,3 +547,32 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
   .hero-rail-track small{font-size:5px}
 }
 @media(prefers-reduced-motion:reduce){.hero-rail-track{transform:none!important}}
+
+
+/* V26 — SKYFURY branding + doubled hero partner/sponsor logos; single-instance rails */
+.hero-rail-track span{width:420px;height:216px;flex-basis:420px;border-radius:14px}
+.hero-rail-track img{max-width:328px;max-height:152px}
+.hero-rail-track .asi{height:216px;gap:8px}
+.hero-rail-track .asi img{max-width:210px;max-height:124px}
+.hero-rail-track small{font-size:10px}
+.hero-rail-window{height:228px}
+.hero-partner-rail{min-height:240px}
+.hero-rail-label{flex-basis:135px;font-size:10px}
+.hero-sponsor-rail .hero-rail-track span{height:216px}
+@media(max-width:1100px){
+  .hero-partner-rail{min-height:190px}
+  .hero-rail-window{height:178px}
+  .hero-rail-track span{width:360px;height:168px;flex-basis:360px}
+  .hero-rail-track img{max-width:280px;max-height:132px}
+  .hero-rail-track .asi{height:168px}
+  .hero-rail-track .asi img{max-width:180px;max-height:108px}
+}
+@media(max-width:760px){
+  .hero-partner-rail{min-height:150px}
+  .hero-rail-window{height:138px}
+  .hero-rail-track span{width:284px;height:126px;flex-basis:284px}
+  .hero-rail-track img{max-width:224px;max-height:108px}
+  .hero-rail-track .asi{height:126px}
+  .hero-rail-track .asi img{max-width:152px;max-height:90px}
+  .hero-rail-track small{font-size:7px}
+}
