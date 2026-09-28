@@ -94,3 +94,22 @@ if(eventSlider){
     art.style.setProperty('--my','0px');
   }, {passive:true});
 })();
+
+
+/* V15 — live telemetry shimmer so the hero visibly feels active */
+(() => {
+  const readout = document.querySelector('.hero-readout');
+  if (!readout || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const values = readout.querySelectorAll('b');
+  if (values.length < 2) return;
+  let speed = 126;
+  let altitude = 42;
+  setInterval(() => {
+    speed += Math.round((Math.random() - 0.5) * 10);
+    altitude += Math.round((Math.random() - 0.5) * 4);
+    speed = Math.max(108, Math.min(148, speed));
+    altitude = Math.max(34, Math.min(58, altitude));
+    values[0].textContent = String(altitude).padStart(3,'0');
+    values[1].textContent = String(speed).padStart(3,'0');
+  }, 850);
+})();
