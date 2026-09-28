@@ -576,3 +576,5 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
   .hero-rail-track .asi img{max-width:152px;max-height:90px}
   .hero-rail-track small{font-size:7px}
 }
+
+.competition-subtitle{font:600 13px Inter,sans-serif!important;color:rgba(241,246,245,.78)!important;letter-spacing:.08em;text-transform:uppercase;margin:-7px 0 14px!important}
