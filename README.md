@@ -1,6 +1,6 @@
-# NATIONAL FPV DRONE RACING CHAMPIONSHIP 2026
+# SKYFURY 2026 — National FPV Drone Racing Championship
 
-Official static website package for the National FPV Drone Racing Championship 2026.
+Official static website package for the SKYFURY 2026 — National FPV Drone Racing Championship.
 
 V17 adds a continuously scrolling co-organiser logo marquee using the supplied AASSC, Aeronautical Society of India, AeroVidya and SIATI logos.
 
