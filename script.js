@@ -70,3 +70,27 @@ if(eventSlider){
   eventSlider.addEventListener('touchend',()=>setTimeout(startEventSlide,1800),{passive:true});
   startEventSlide();
 }
+
+/* V14 — Gentle pointer-controlled cinematic parallax for desktop */
+(() => {
+  const hero = document.querySelector('.hero');
+  const art = document.querySelector('.hero-art');
+  if(!hero || !art || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let raf = 0;
+  const move = (e) => {
+    if(window.innerWidth < 901) return;
+    const r = hero.getBoundingClientRect();
+    const x = ((e.clientX-r.left)/r.width-.5)*18;
+    const y = ((e.clientY-r.top)/r.height-.5)*12;
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(()=>{
+      art.style.setProperty('--mx', `${x}px`);
+      art.style.setProperty('--my', `${y}px`);
+    });
+  };
+  hero.addEventListener('pointermove', move, {passive:true});
+  hero.addEventListener('pointerleave', ()=>{
+    art.style.setProperty('--mx','0px');
+    art.style.setProperty('--my','0px');
+  }, {passive:true});
+})();

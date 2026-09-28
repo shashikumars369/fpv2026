@@ -205,3 +205,116 @@ h1{ text-shadow:0 8px 30px rgba(0,0,0,.45)}h1 em{color:var(--cyan);text-shadow:0
 }
 @media(max-width:760px){.ticker-track{animation-duration:45s}.event-slider{gap:16px}.event-slider .event-card{flex-basis:86vw}.cinematic-track{animation-duration:42s}.cinematic-track figure{width:260px;height:155px}.cinematic-rail:before,.cinematic-rail:after{width:45px}}
 @media(prefers-reduced-motion:reduce){.ticker-track,.cinematic-track{animation:none}.event-slider{scroll-behavior:auto}}
+
+/* V14 — Dynamic cinematic hero: slow camera drift, scanlines, speed streaks and pointer parallax */
+.hero-art{
+  --mx:0px;
+  --my:0px;
+  --hero-scale:1;
+  transform:translate3d(var(--mx),calc(-50% + var(--my)),0) scale(var(--hero-scale));
+  animation:heroFloat 8s ease-in-out infinite alternate;
+  will-change:transform,background-position,background-size;
+  isolation:isolate;
+}
+.hero-art::before{
+  background:
+    linear-gradient(90deg,rgba(2,7,20,.64) 0%,rgba(2,7,20,.12) 32%,transparent 66%),
+    linear-gradient(180deg,rgba(2,7,20,.02),rgba(2,7,20,.28));
+  z-index:2;
+}
+.hero-art::after{z-index:6;}
+.hero-art{
+  background-size:cover,cover,auto;
+  animation:heroFloat 8s ease-in-out infinite alternate, heroKenBurns 18s ease-in-out infinite alternate;
+}
+.hero-scan{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0px,rgba(255,255,255,.035) 1px,transparent 2px,transparent 6px);
+  mix-blend-mode:screen;
+  opacity:.34;
+  animation:scanDrift 7s linear infinite;
+}
+.hero-scan::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;
+  top:-25%;
+  height:22%;
+  background:linear-gradient(180deg,transparent,rgba(25,231,255,.14),transparent);
+  filter:blur(5px);
+  animation:scanBeam 5.5s linear infinite;
+}
+.speed-line{
+  position:absolute;
+  height:2px;
+  z-index:4;
+  pointer-events:none;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,rgba(25,231,255,.9),rgba(255,255,255,.85),transparent);
+  box-shadow:0 0 12px rgba(25,231,255,.65);
+  opacity:0;
+}
+.sl1{width:150px;left:8%;top:28%;animation:speedDash 3.2s linear infinite .2s}
+.sl2{width:95px;left:20%;top:68%;animation:speedDash 4.1s linear infinite 1.1s}
+.sl3{width:185px;left:55%;top:23%;animation:speedDash 3.6s linear infinite 2s}
+.sl4{width:120px;left:62%;top:78%;animation:speedDash 4.6s linear infinite .8s}
+.hero-crosshair{
+  position:absolute;
+  z-index:5;
+  width:38px;height:38px;
+  border:1px solid rgba(25,231,255,.62);
+  border-radius:50%;
+  box-shadow:0 0 18px rgba(25,231,255,.16);
+  animation:targetPulse 2.8s ease-in-out infinite;
+}
+.hero-crosshair::before,.hero-crosshair::after{content:"";position:absolute;background:rgba(25,231,255,.75)}
+.hero-crosshair::before{width:56px;height:1px;left:-10px;top:18px}
+.hero-crosshair::after{height:56px;width:1px;left:18px;top:-10px}
+.hero-crosshair i{position:absolute;width:5px;height:5px;border-radius:50%;background:#ff4ccf;left:16px;top:16px;box-shadow:0 0 12px #ff4ccf}
+.hc1{right:12%;top:18%}.hc2{left:11%;bottom:19%;transform:scale(.7);animation-delay:1.2s}
+.hero-badge{
+  position:absolute;z-index:7;left:22px;top:20px;
+  padding:8px 11px;
+  background:rgba(2,7,20,.56);
+  border:1px solid rgba(25,231,255,.4);
+  color:#e9ffff;
+  backdrop-filter:blur(8px);
+  font:800 8px Orbitron,sans-serif;
+  letter-spacing:.14em;
+  box-shadow:0 0 22px rgba(25,231,255,.12);
+}
+.hero-badge .live-dot{display:inline-block;width:6px;height:6px;margin-right:7px;vertical-align:1px}
+.hero-readout{
+  position:absolute;z-index:7;right:20px;top:20px;
+  display:grid;grid-template-columns:auto auto auto;gap:2px 7px;
+  padding:10px 12px;
+  background:rgba(2,7,20,.52);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  font:700 7px Orbitron,sans-serif;
+  letter-spacing:.12em;
+}
+.hero-readout span{color:#91a7b1}.hero-readout b{color:var(--cyan);font-size:10px}.hero-readout i{color:#fff;font-style:normal}
+.hud{z-index:7!important;bottom:12%!important;right:4%!important;text-shadow:0 0 12px rgba(25,231,255,.45)}
+@keyframes heroFloat{from{--hero-scale:1}to{--hero-scale:1.012}}
+@keyframes heroKenBurns{from{background-position:center center}to{background-position:52% 48%}}
+@keyframes scanDrift{from{transform:translateY(0)}to{transform:translateY(8px)}}
+@keyframes scanBeam{from{transform:translateY(-20%)}to{transform:translateY(560%)}}
+@keyframes speedDash{0%{transform:translateX(-160px) scaleX(.3);opacity:0}12%{opacity:.9}55%{opacity:.8}100%{transform:translateX(680px) scaleX(1.2);opacity:0}}
+@keyframes targetPulse{0%,100%{transform:scale(.92);opacity:.48}50%{transform:scale(1.08);opacity:1}}
+@media(max-width:900px){
+  .hero-art{animation:none;transform:translate3d(0,-50%,0) scale(1)}
+  .hero-badge,.hero-readout{transform:scale(.85);transform-origin:top right}
+  .hero-scan{opacity:.22}
+}
+@media(max-width:560px){
+  .hero-badge{left:12px;top:12px;font-size:6px}
+  .hero-readout{right:10px;top:10px;font-size:6px}
+  .hero-crosshair{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-art,.hero-scan,.hero-scan::after,.speed-line,.hero-crosshair{animation:none!important}
+}
