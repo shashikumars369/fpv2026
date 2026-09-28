@@ -113,3 +113,41 @@ if(eventSlider){
     values[1].textContent = String(speed).padStart(3,'0');
   }, 850);
 })();
+
+
+/* V25 — Continuous rails without duplicated logo elements.
+   Each co-organiser/sponsor logo exists exactly once in the HTML. */
+(() => {
+  const rails = document.querySelectorAll('.hero-rail-window');
+  if (!rails.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  rails.forEach(windowEl => {
+    const track = windowEl.querySelector('.hero-rail-track');
+    if (!track) return;
+    let offset = 0;
+    let last = performance.now();
+    let paused = false;
+    const speed = track.classList.contains('sponsor-hero-track') ? 18 : 14;
+    const step = (now) => {
+      const dt = Math.min(40, now - last);
+      last = now;
+      if (!paused) {
+        offset -= speed * dt / 1000;
+        const first = track.firstElementChild;
+        if (first) {
+          const stepWidth = first.getBoundingClientRect().width + parseFloat(getComputedStyle(track).gap || '0');
+          if (-offset >= stepWidth) {
+            offset += stepWidth;
+            track.appendChild(first);
+          }
+        }
+        track.style.transform = `translate3d(${offset}px,0,0)`;
+      }
+      requestAnimationFrame(step);
+    };
+    windowEl.addEventListener('mouseenter', () => { paused = true; });
+    windowEl.addEventListener('mouseleave', () => { paused = false; last = performance.now(); });
+    windowEl.addEventListener('touchstart', () => { paused = true; }, {passive:true});
+    windowEl.addEventListener('touchend', () => { paused = false; last = performance.now(); }, {passive:true});
+    requestAnimationFrame(step);
+  });
+})();
